@@ -1,15 +1,16 @@
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { Fragment, useContext } from 'react'
 import { NavigationContainer, NavLinks, NavLink, LogoContainer } from './navigation.styles.jsx'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
-import { UserContext } from '../../context/user.context'
+
 import { CartContext } from '../../context/cart.context'
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component'
+import { selectCurrentUser } from '../../store/user/user.selector.js'
 
 const Navigation = () => {
-    const { currentUser } = useContext(UserContext)
+    const currentUser = selectCurrentUser
     const { isCartOpen } = useContext(CartContext)
    
     return (
